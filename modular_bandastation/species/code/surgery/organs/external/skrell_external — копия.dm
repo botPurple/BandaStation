@@ -106,34 +106,31 @@
 	if(cloth_wrap_overlay)
 		return
 
-	remove_cloth_wrap(bodypart)
+	var/datum/sprite_accessory/skrell_cloth_wrap/skrell_cloth_wrap_datum = bodypart_overlay.sprite_datum
+
+	if(!istype(skrell_cloth_wrap_datum))
+		return
+
+	var/cloth_wrap_key = skrell_cloth_wrap_datum.icon_state
+	if(!cloth_wrap_key)
+		return
 
 	var/mob/living/carbon/human/owner = bodypart.owner
-	if(!istype(owner))
-		return
-
-	var/toggle_check = owner.dna.features[FEATURE_SKRELL_CLOTH_WRAP_TOGGLE]
-	var/tentacle_style = owner.dna.features[FEATURE_SKRELL_HEAD_TENTACLE]
-	var/feature_name = owner.dna.features[FEATURE_SKRELL_CLOTH_WRAP]
-	if(toggle_check == "None")
-		return
-
-	if(tentacle_style)
-		feature_name = tentacle_style
-
-	cloth_wrap_overlay = new
-	cloth_wrap_overlay.color_source = ORGAN_COLOR_OVERRIDE
-	cloth_wrap_overlay.skrell_cloth_wrap_color = owner.dna.features[FEATURE_SKRELL_CLOTH_WRAP_COLOR]
-	cloth_wrap_overlay.set_appearance_from_name(feature_name)
-	bodypart.add_bodypart_overlay(cloth_wrap_overlay)
+	var/feature_name = bodypart.owner.dna.features[FEATURE_SKRELL_CLOTH_WRAP]
+	if (feature_name && istype(owner, /mob/living/carbon/human))
+		cloth_wrap_overlay = new
+		cloth_wrap_overlay.cloth_wrap_key = cloth_wrap_key
+		cloth_wrap_overlay.color_source = ORGAN_COLOR_OVERRIDE
+		cloth_wrap_overlay.skrell_cloth_wrap_color = owner.dna.features[FEATURE_SKRELL_CLOTH_WRAP_COLOR]
+		cloth_wrap_overlay.set_appearance_from_name(feature_name)
+		bodypart.add_bodypart_overlay(cloth_wrap_overlay)
+		to_chat(world, "FEATURE_SKRELL_CLOTH_WRAP_COLOR = [FEATURE_SKRELL_CLOTH_WRAP_COLOR]\n cloth_wrap_overlay = [cloth_wrap_overlay]\n feature_name = [feature_name]\n cloth_wrap_key = [cloth_wrap_key]\n bodypart_overlay = [bodypart_overlay]\n bodypart = [bodypart]\n skrell_cloth_wrap_datum = [skrell_cloth_wrap_datum]")
 
 /obj/item/organ/cloth_wrap/proc/remove_cloth_wrap(obj/item/bodypart/bodypart)
-	if(cloth_wrap_overlay)
-		bodypart.remove_bodypart_overlay(cloth_wrap_overlay)
-		cloth_wrap_overlay = null
-	for(var/datum/bodypart_overlay/mutant/overlay in bodypart.bodypart_overlays)
-		if(overlay.feature_key == FEATURE_SKRELL_CLOTH_WRAP)
-			bodypart.remove_bodypart_overlay(overlay)
+	if(!cloth_wrap_overlay)
+		return
+	bodypart.remove_bodypart_overlay(cloth_wrap_overlay)
+	QDEL_NULL(cloth_wrap_overlay)
 
 /datum/bodypart_overlay/mutant/cloth_wrap/can_draw_on_bodypart(obj/item/bodypart/bodypart_owner, mob/living/carbon/owner, is_husked = FALSE)
 	. = ..()
