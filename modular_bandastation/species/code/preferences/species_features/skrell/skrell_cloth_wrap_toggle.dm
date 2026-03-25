@@ -1,4 +1,4 @@
-//Это костыль для корректной синхры между cloth_wrap и head_tentacles, нужен для правильного отображения кнопок в TGUI в настройке персонажа
+// This is a crutch for correct synchronization between cloth_wrap and head_tentacles, needed for correct button display in TGUI character setup
 /datum/preference/choiced/species_feature/skrell_cloth_wrap_toggle
 	savefile_key = "feature_skrell_cloth_wrap_toggle"
 	savefile_identifier = PREFERENCE_CHARACTER

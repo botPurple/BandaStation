@@ -115,7 +115,7 @@
 	var/toggle_check = owner.dna.features[FEATURE_SKRELL_CLOTH_WRAP_TOGGLE]
 	var/tentacle_style = owner.dna.features[FEATURE_SKRELL_HEAD_TENTACLE]
 	var/feature_name = owner.dna.features[FEATURE_SKRELL_CLOTH_WRAP]
-	if(toggle_check == "None")
+	if(toggle_check == SPRITE_ACCESSORY_NONE)
 		return
 
 	if(tentacle_style)

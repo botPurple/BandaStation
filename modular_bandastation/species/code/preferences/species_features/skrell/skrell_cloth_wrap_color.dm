@@ -13,5 +13,5 @@
 /datum/preference/color/skrell_cloth_wrap_color/is_accessible(datum/preferences/preferences)
 	if(!..(preferences))
 		return FALSE
-	var/pref = preferences.read_preference(/datum/preference/choiced/species_feature/skrell_cloth_wrap_toggle) //читает значение cloth_wrap_toggle потому что обычный cloth_wrap зависит от head_tentacles, а не выбора в префах
-	return (pref == "Cloth Wrap") && preferences.read_preference(/datum/preference/choiced/species_feature/skrell_cloth_wrap_toggle) != SPRITE_ACCESSORY_NONE
+	var/pref = preferences.read_preference(/datum/preference/choiced/species_feature/skrell_cloth_wrap_toggle) // reads the value of cloth_wrap_toggle because the regular cloth_wrap depends on head_tentacles, not the choice in prefs
+	return pref == /datum/sprite_accessory/skrell_cloth_wrap_toggle/on::name

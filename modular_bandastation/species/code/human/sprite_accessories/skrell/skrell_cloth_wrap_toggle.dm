@@ -1,4 +1,4 @@
-//Это костыль необходимый для работы TGUI в том виде, в котором я хочу, все спрайты ткани задаются в /datum/sprite_accessory/skrell_cloth_wrap
+// This is a crutch required for TGUI to work as I want it to, all fabric sprites are defined in /datum/sprite_accessory/skrell_cloth_wrap
 /datum/sprite_accessory/skrell_cloth_wrap_toggle
 	icon = 'icons/bandastation/mob/species/skrell/sprite_accessories/cloth_wrap.dmi'
 	color_src = TRUE
