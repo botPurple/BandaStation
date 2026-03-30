@@ -29,6 +29,13 @@
 	. = ..()
 	atom_storage.remove_all()
 
+	var/mob/living/carbon/human/H = limb.owner
+	if(!istype(H))
+		return
+	for(var/obj/item/organ/O in H.organs)
+		if(istype(O, /obj/item/organ/tentacle_ornament) || istype(O, /obj/item/organ/cloth_wrap))
+			qdel(O)
+
 // MARK: Action
 
 /datum/action/item_action/organ_action/headpocket
@@ -70,7 +77,7 @@
 
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
-	organ_flags = parent_type::organ_flags | ORGAN_EXTERNAL
+	organ_flags = parent_type::organ_flags | ORGAN_UNREMOVABLE
 
 /datum/bodypart_overlay/mutant/cloth_wrap
 	layers = EXTERNAL_FRONT|EXTERNAL_ADJACENT
@@ -143,7 +150,7 @@
 
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
-	organ_flags = parent_type::organ_flags | ORGAN_EXTERNAL
+	organ_flags = parent_type::organ_flags | ORGAN_UNREMOVABLE
 
 /datum/bodypart_overlay/mutant/tentacle_ornament
 	layers = EXTERNAL_FRONT|EXTERNAL_ADJACENT
