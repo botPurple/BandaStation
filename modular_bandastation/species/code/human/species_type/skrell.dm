@@ -36,7 +36,7 @@
 	payday_modifier = 1.5
 
 /datum/species/skrell/prepare_human_for_preview(mob/living/carbon/human/human)
-	human.dna.features[FEATURE_MUTANT_COLOR] = COLOR_VIBRANT_LIME
+	human.dna.features[FEATURE_MUTANT_COLOR] = COLOR_TRUE_BLUE
 	human.dna.features[FEATURE_SKRELL_HEAD_TENTACLE] = /datum/sprite_accessory/skrell_head_tentacle/long::name
 /// When creating a picture for the preferences UI, organs are created first, and only then dna.features are given
 	for(var/obj/item/organ/O in human.organs)
