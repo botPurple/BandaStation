@@ -20,7 +20,6 @@ import { Window } from '../../layouts';
 import {
   CATEGORY_ICONS_COOKING,
   CATEGORY_ICONS_CRAFTING,
-  CATEGORY_NAMES,
 } from './constants';
 import { FoodtypeContent } from './content/FoodtypeContent';
 import { MaterialContent } from './content/MaterialContent';
