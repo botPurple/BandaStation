@@ -123,6 +123,7 @@
 		/datum/design/borg_upgrade_engineeringomnitool,
 		/datum/design/borg_upgrade_engineering_app,
 		/datum/design/borg_upgrade_inducer,
+		/datum/design/borg_upgrade_holoprojector,
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE)

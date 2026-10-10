@@ -1,3 +1,7 @@
 #include "_borgs.dm"
 
 #include "code/robot_model.dm"
+#include "code/mechfabricator_designs.dm"
+#include "code/robot_upgrades.dm"
+#include "code/tools.dm"
+#include "code/holosign_creator.dm"
